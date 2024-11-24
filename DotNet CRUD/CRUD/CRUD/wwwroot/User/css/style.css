@@ -1,0 +1,88 @@
+        /* Card Container */
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            overflow: hidden; /* Ensures the card content is clipped inside the border radius */
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px); /* Slight lift effect */
+        }
+
+            /* Card Image */
+            .product-card img {
+                width: 100%; /* Ensure the image fills the width of the container */
+                height: auto; /* Maintain the original aspect ratio */
+                object-fit: contain; /* Make sure the image fits without being cropped */
+                transition: transform 0.3s ease; /* Optional: for hover effect */
+            }
+
+
+        /* Hover effect for the image */
+        .product-card:hover img {
+            transform: scale(1.05); /* Zoom effect on image */
+        }
+
+        /* Card Body */
+        .product-card .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-card .card-text {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .product-card .card-price {
+            font-size: 1.2rem;
+            color: #28a745; /* Green for price */
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Button */
+        .product-card .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slight button zoom on hover */
+        }
+
+        /* Responsive Design for Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Add responsive padding to card container */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .search-box input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }

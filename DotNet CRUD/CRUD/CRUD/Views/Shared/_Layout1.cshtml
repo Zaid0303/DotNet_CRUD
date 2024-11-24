@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Practical</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/User/css/style.css">
+
+</head>
+<body>
+
+                    @*  Navbar Start *@
+                @await Html.PartialAsync("User_Navbar")
+                @*  Navbar End *@
+
+    <!-- Add Font Awesome for the Profile Icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+    <div id="products" class="container my-5">
+        @RenderBody()
+
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Filter Products by Category
+        function filterProducts(category) {
+            const allButtons = document.querySelectorAll('.filter-btn');
+            allButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            const activeButton = document.querySelector(`.filter-btn:contains(${category})`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            const allProducts = document.querySelectorAll('.product-card');
+            allProducts.forEach(product => {
+                if (category === 'all' || product.classList.contains(category)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Search Products by Name
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const allProducts = document.querySelectorAll('.product-card');
+
+            allProducts.forEach(product => {
+                const productName = product.querySelector('.card-title').innerText.toLowerCase();
+                if (productName.includes(searchText)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>
